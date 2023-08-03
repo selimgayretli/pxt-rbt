@@ -1,50 +1,92 @@
-# gator:light Light Sensor
+# i2cLCD1602
 
-[![Community Discord](https://img.shields.io/discord/448979533891371018.svg)](https://aka.ms/makecodecommunity)
+makecode I2C LCD1602 package for micro:bit  
 
-The gator:starter, which includes the gator:light and gator:temp can be purchased [here.](https://www.sparkfun.com/products/14891)
-The gator:light, included on the gator:starter is an analog light sensor that can be alligator clipped to the micro:bit or gator:bit board.
+Author: shaoziyang  
+Date:   2018.Mar  
+  
+![](lcd.jpg)
 
-![SparkFun gator:light](https://raw.githubusercontent.com/sparkfun/pxt-gator-light/master/icon.png)  
+## Add extension
 
-## ~ hint
+open your microbit makecode project, in Extension, paste  
 
-To use this package, go to https://makecode.microbit.org, click ``Add package`` and search for **gator-light**. The package is located [here](https://makecode.microbit.org/pkg/sparkfun/pxt-gator-light)
+https://github.com/makecode-extensions/i2cLCD1602  
 
-## ~
+to search box then search.
 
 ## Basic usage
 
-```blocks
-//Sets the value of the light variable to the value read from the gator:light
-let light = 0
-light = gatorlight.light(AnalogPin.P0, gatorlightType.Lux)
 ```
-
-Use ``||Get light on pin||`` to read the light value from a gator:light sensor attached to a given pin in lux or the straight ADC value.
-
-## Example: Light Detector
-
-```blocks
-//Read light value and write it to the micro:bit screen as a bar graph.
-let light = 0
-basic.forever(function () {
-    light = gatorlight.light(AnalogPin.P0, gatorlightType.Lux)
-    led.plotBarGraph(
-        light,
-        1023
-    )
+let item = 0
+I2C_LCD1602.LcdInit(0)
+I2C_LCD1602.ShowString("Hello", 0, 0)
+basic.forever(() => {
+    item += 1
+    I2C_LCD1602.ShowNumber(item, 0, 1)
+    basic.pause(1000)
 })
 ```
 
-## Supported targets
 
-* for PXT/microbit
+## I2C Address  
+- PCF8574: 39  
+- PCF8574A: 63  
+- Auto: 0
+
+## API
+
+- LcdInit(Addr: number)  
+Initial LCD  
+Addr: I2C Address. If Addr is zero, it will try to recognition correctly address automaticly.  
+
+- ShowNumber(n: number, x: number, y: number)  
+show a number in LCD at given position.  
+n: number will be show  
+x: is LCD column position, [0 - 15]  
+y: is LCD row position, [0 - 1]  
+
+- ShowString(s: string, x: number, y: number)  
+show a string in LCD at given position.  
+s: string will be show  
+x: is LCD column position, [0 - 15]  
+y: is LCD row position, [0 - 1]  
+
+- on()  
+turn on LCD  
+
+- off()  
+turn off LCD  
+
+- clear()  
+clear LCD content  
+
+- BacklightOn()  
+turn on LCD backlight  
+
+- BacklightOff()  
+turn off LCD backlight  
+
+- shl()
+shift left screen
+
+- shr()
+shift right screen
+
+
+## Demo
+
+![](demo.jpg)
 
 ## License
 
 MIT
 
-```package
-gatorlight=github:sparkfun/pxt-gator-light
-```
+Copyright (c) 2018, microbit/micropython Chinese community  
+
+## Supported targets
+
+* for PXT/microbit
+
+
+[From microbit/micropython Chinese community](https://www.micropython.org.cn)

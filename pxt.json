@@ -1,18 +1,19 @@
 {
-    "name": "rbt",
-    "version": "0.0.1",
-    "description": "SparkFun gator:light Temperature Sensor",
+    "name": "i2cLCD1602",
+    "version": "1.5.0",
+    "description": "makecode I2C LCD1602 extension for micro:bit",
     "license": "MIT",
     "dependencies": {
         "core": "*"
     },
     "files": [
         "README.md",
-        "rbt.ts",
-        "rbt.cpp",
-        "shims.d.ts",
-        "enums.d.ts"
+        "pxtparts.json",
+        "LCD1602_I2C.ts",
+        "parts/LCD1602_I2C.svg"
     ],
-    "testFiles": [],
+    "testFiles": [
+        "test.ts"
+    ],
     "public": true
 }
