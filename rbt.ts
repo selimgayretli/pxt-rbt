@@ -170,7 +170,7 @@ namespace rbt {
     /**
      * turn on LCD backlight
      */
-    //% blockId="I2C_LCD1620_BACKLIGHT_ON" block="turn on backlight"
+    //% blockId="I2C_LCD1620_BACKLIGHT_ON" block="isik ac"
     //% weight=71 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function BacklightOn(): void {
