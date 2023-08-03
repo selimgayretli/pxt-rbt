@@ -160,7 +160,7 @@ namespace rbt {
     /**
      * clear all display content
      */
-    //% blockId="I2C_LCD1620_sil" block="Sill"
+    //% blockId="I2C_LCD1620_sil" block="Sil_test"
     //% weight=85 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function sil(): void {
