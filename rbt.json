@@ -1,0 +1,19 @@
+{
+    "name": "rbt",
+    "version": "1.5.0",
+    "description": "makecode I2C LCD1602 extension for micro:bit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "pxtparts.json",
+        "rbt.ts",
+        "parts/ideqr.svg"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
