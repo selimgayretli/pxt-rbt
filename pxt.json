@@ -1,6 +1,6 @@
 {
     "name": "rbt",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "rbt test 01",
     "license": "MIT",
     "dependencies": {
