@@ -1,7 +1,7 @@
 {
     "name": "rbt",
     "version": "0.0.2",
-    "description": "makecode I2C LCD1602 extension for micro:bit",
+    "description": "rbt test 01",
     "license": "MIT",
     "dependencies": {
         "core": "*"
