@@ -140,7 +140,7 @@ namespace rbt {
     /**
      * turn on LCD
      */
-    //% blockId="I2C_LCD1620_ON" block="turn on LCD"
+    //% blockId="I2C_LCD1620_ON" block="turn LCD"
     //% weight=81 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function on(): void {
@@ -160,10 +160,10 @@ namespace rbt {
     /**
      * clear all display content
      */
-    //% blockId="I2C_LCD1620_CLEAR" block="clear LCD"
+    //% blockId="I2C_LCD1620_CLEAR" block="Sill"
     //% weight=85 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
-    export function sil(): void {
+    export function Sil(): void {
         cmd(0x01)
     }
 
