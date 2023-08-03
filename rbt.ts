@@ -181,7 +181,7 @@ namespace rbt {
     /**
      * turn off LCD backlight
      */
-    //% blockId="I2C_LCD1620_BACKLIGHT_OFF" block="turn off backlight"
+    //% blockId="I2C_LCD1620_BACKLIGHT_OFF" block="isigi kapat"
     //% weight=70 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
     export function BacklightOff(): void {
