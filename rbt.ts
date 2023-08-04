@@ -40,7 +40,7 @@ namespace rbt {
         //% block="Red"
         Red,
         //% block="Green"
-        Green
+        Green,
         //% block="Blue"
         Blue,
         
