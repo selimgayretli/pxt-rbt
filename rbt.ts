@@ -214,9 +214,18 @@ namespace rbt {
     //% blockId="I2C_LCD1620_SHR" block="Shift Right"
     //% weight=60 blockGap=8
     //% parts=LCD1602_I2C trackArgs=0
+
+    
     export function shr(): void {
         cmd(0x1C)
     }
+    
+    /**
+    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
+    * @param Sonarunit two states of ultrasonic module, eg: Centimeters
+    */
+    //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
+    //% weight=35
     export function ultrasonic(unit: SonarUnit, maxCmDistance = 500): number {
         // send pulse
         pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
