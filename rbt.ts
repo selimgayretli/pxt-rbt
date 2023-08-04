@@ -223,7 +223,7 @@ namespace rbt {
     */
     //% blockId=ldr block="APDS-9960 Light Value"
     //% weight=35
-    export function ldr(): void { 
+    export function ldr(): number { 
         // send pulse
         pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
         pins.digitalWritePin(DigitalPin.P8, 0);
@@ -233,7 +233,8 @@ namespace rbt {
         pins.digitalWritePin(DigitalPin.P8, 0);
         // read pulse
 
-    
+        return 0
+
     }
 
 
