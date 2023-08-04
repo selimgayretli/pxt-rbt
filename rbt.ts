@@ -12,15 +12,7 @@ namespace rbt {
     let i2cAddr: number // 0x3F: PCF8574A, 0x27: PCF8574
     let BK: number      // backlight control
     let RS: number      // command/data
-    /**
-    * Unit of Ultrasound Module
-    */
-    export enum SonarUnit {
-        //% block="cm"
-        Centimeters,
-        //% block="inches"
-        Inches
-    }
+
 
     // set LCD reg
     function setreg(d: number) {
@@ -217,29 +209,5 @@ namespace rbt {
     export function shr(): void {
         cmd(0x1C)
     }
-     /**
-    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param Sonarunit two states of ultrasonic module, eg: Centimeters
-    */
-    //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
-    //% weight=35
-    export function ultrasonic(unit: SonarUnit, maxCmDistance = 500): number {
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (unit) {
-            case SonarUnit.Centimeters:
-                return Math.floor(d * 34 / 2 / 1000);
-            case SonarUnit.Inches:
-                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
-            default:
-                return d;
-        }
-    }
+     
 }
