@@ -161,7 +161,7 @@ namespace rbt {
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
     * @param direction two states of ultrasonic module, eg: Centimeters
     */
-    //% blockId=ultrasonic block="APDS-9960 Direction Keys"
+    //% blockId=directionkeys block="APDS-9960 Direction Keys"
     //% weight=35
     export function directionkeys(unit: Direction, maxCmDistance = 500): number {n 
         // send pulse
@@ -192,7 +192,7 @@ namespace rbt {
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
     * @param rgb two states of ultrasonic module, eg: Centimeters
     */
-    //% blockId=ultrasonic block="APDS-9960 RGB Color"
+    //% blockId=rgbColor block="APDS-9960 RGB Color"
     //% weight=35
     export function rgbColor(unit: RGBcolor, maxCmDistance = 500): number { 
         // send pulse
@@ -221,7 +221,7 @@ namespace rbt {
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
     * @param ldr two states of ultrasonic module, eg: Centimeters
     */
-    //% blockId=ultrasonic block="APDS-9960 Light Value"
+    //% blockId=ldr block="APDS-9960 Light Value"
     //% weight=35
     export function ldr(): void { 
         // send pulse
