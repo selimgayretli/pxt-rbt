@@ -7,7 +7,7 @@
 /**
  * Custom blocks
  */
-//% weight=20 color=#0fbc11 icon="▀"
+//% weight=20 color=#800080 icon="\uf0fe"
 namespace rbt {
     let i2cAddr: number // 0x3F: PCF8574A, 0x27: PCF8574
     let BK: number      // backlight control
@@ -20,6 +20,31 @@ namespace rbt {
         Centimeters,
         //% block="inches"
         Inches
+    }
+
+    export enum Direction {
+        
+        //% block="up"
+        Up,
+        //% block="down"
+        Down,
+        //% block="left"
+        Left,
+        //% block="right"
+        Right,
+
+    }
+
+    export enum RGBcolor {
+        
+        //% block="Red"
+        Red,
+        //% block="Green"
+        Green
+        //% block="Blue"
+        Blue,
+        
+
     }
 
     // set LCD reg
@@ -104,127 +129,12 @@ namespace rbt {
         cmd(0x01)       // clear
     }
 
-    /**
-     * show a number in LCD at given position
-     * @param n is number will be show, eg: 10, 100, 200
-     * @param x is LCD column position, eg: 0
-     * @param y is LCD row position, eg: 0
-     */
-    //% blockId="I2C_LCD1620_SHOW_NUMBER" block="show number %n|at x %x|y %y"
-    //% weight=90 blockGap=8
-    //% x.min=0 x.max=15
-    //% y.min=0 y.max=1
-    //% parts=LCD1602_I2C trackArgs=0
-    export function ShowNumber(n: number, x: number, y: number): void {
-        let s = n.toString()
-        ShowString(s, x, y)
-    }
 
-    /**
-     * show a string in LCD at given position
-     * @param s is string will be show, eg: "Hello"
-     * @param x is LCD column position, [0 - 15], eg: 0
-     * @param y is LCD row position, [0 - 1], eg: 0
-     */
-    //% blockId="I2C_LCD1620_SHOW_STRING" block="show string %s|at x %x|y %y"
-    //% weight=90 blockGap=8
-    //% x.min=0 x.max=15
-    //% y.min=0 y.max=1
-    //% parts=LCD1602_I2C trackArgs=0
-    export function ShowString(s: string, x: number, y: number): void {
-        let a: number
-
-        if (y > 0)
-            a = 0xC0
-        else
-            a = 0x80
-        a += x
-        cmd(a)
-
-        for (let i = 0; i < s.length; i++) {
-            dat(s.charCodeAt(i))
-        }
-    }
-
-    /**
-     * turn on LCD
-     */
-    //% blockId="I2C_LCD1620_ON" block="turn LCD"
-    //% weight=81 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function on(): void {
-        cmd(0x0C)
-    }
-
-    /**
-     * turn off LCD
-     */
-    //% blockId="I2C_LCD1620_OFF" block="turn off LCD"
-    //% weight=80 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function off(): void {
-        cmd(0x08)
-    }
-
-    /**
-     * clear all display content
-     */
-    //% blockId="I2C_LCD1620_sil" block="Sil_testtttttt"
-    //% weight=85 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function sil(): void {
-        cmd(0x01)
-    }
-
-    /**
-     * turn on LCD backlight
-     */
-    //% blockId="I2C_LCD1620_BACKLIGHT_ON" block="isik accccccc"
-    //% weight=71 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function BacklightOn(): void {
-        BK = 8
-        cmd(0)
-    }
-
-    /**
-     * turn off LCD backlight
-     */
-    //% blockId="I2C_LCD1620_BACKLIGHT_OFF" block="isigi kapat"
-    //% weight=70 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function BacklightOff(): void {
-        BK = 0
-        cmd(0)
-    }
-
-    /**
-     * shift left
-     */
-    //% blockId="I2C_LCD1620_SHL" block="Shift Left"
-    //% weight=61 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-    export function shl(): void {
-        cmd(0x18)
-    }
-
-    /**
-     * shift right
-     */
-    //% blockId="I2C_LCD1620_SHR" block="Shift Right"
-    //% weight=60 blockGap=8
-    //% parts=LCD1602_I2C trackArgs=0
-
-    
-    export function shr(): void {
-        cmd(0x1C)
-    }
-    
     /**
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
     * @param Sonarunit two states of ultrasonic module, eg: Centimeters
     */
-    //% blockId=ultrasonic block="HC-SR04 Sonar unit %unit"
+    //% blockId=ultrasonic block="APDS-9960 Distance"
     //% weight=35
     export function ultrasonic(unit: SonarUnit, maxCmDistance = 500): number {
         // send pulse
@@ -245,5 +155,87 @@ namespace rbt {
                 return d;
         }
     }
+
+    /**
+    *Change the code (Atakan) 
+    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
+    * @param direction two states of ultrasonic module, eg: Centimeters
+    */
+    //% blockId=ultrasonic block="APDS-9960 Direction Keys"
+    //% weight=35
+    export function directionkeys(unit: Direction, maxCmDistance = 500): number {n 
+        // send pulse
+        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P8, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        // read pulse
+        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
+        switch (unit) {
+            case Direction.Up:
+                return Math.floor(d * 34 / 2 / 1000);
+            case Direction.Down:
+                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
+            case Direction.Left:
+                return Math.floor(d * 34 / 2 / 1000);
+            case Direction.Right:
+                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
+            default:
+                return d;
+        }
+    }
+
+    /**
+    *Change the code (Atakan) 
+    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
+    * @param rgb two states of ultrasonic module, eg: Centimeters
+    */
+    //% blockId=ultrasonic block="APDS-9960 RGB Color"
+    //% weight=35
+    export function rgbColor(unit: RGBcolor, maxCmDistance = 500): number { 
+        // send pulse
+        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P8, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        // read pulse
+        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
+        switch (unit) {
+            case RGBcolor.Red:
+                return Math.floor(d * 34 / 2 / 1000);
+            case RGBcolor.Green:
+                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
+            case RGBcolor.Blue:
+                return Math.floor(d * 34 / 2 / 1000);
+            default:
+                return d;
+        }
+    }
+
+    /**
+    *Change the code (Atakan) 
+    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
+    * @param ldr two states of ultrasonic module, eg: Centimeters
+    */
+    //% blockId=ultrasonic block="APDS-9960 Light Value"
+    //% weight=35
+    export function ldr(): void { 
+        // send pulse
+        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P8, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P8, 0);
+        // read pulse
+
+    
+    }
+
+
      
 }
