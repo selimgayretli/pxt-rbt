@@ -8,7 +8,7 @@
  * Custom blocks
  */
 //% weight=20 color=#800080 icon="\uf0fe"
-namespace rbt {
+namespace APDS9960 {
     let i2cAddr: number // 0x3F: PCF8574A, 0x27: PCF8574
     let BK: number      // backlight control
     let RS: number      // command/data
