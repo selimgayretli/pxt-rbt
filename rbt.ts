@@ -22,30 +22,7 @@ namespace rbt {
         Inches
     }
 
-    export enum Direction {
-        
-        //% block="up"
-        Up,
-        //% block="down"
-        Down,
-        //% block="left"
-        Left,
-        //% block="right"
-        Right,
 
-    }
-
-    export enum RGBcolor {
-        
-        //% block="Red"
-        Red,
-        //% block="Green"
-        Green,
-        //% block="Blue"
-        Blue,
-        
-
-    }
 
     // set LCD reg
     function setreg(d: number) {
@@ -156,86 +133,7 @@ namespace rbt {
         }
     }
 
-    /**
-    *Change the code (Atakan) 
-    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param direction two states of ultrasonic module, eg: Centimeters
-    */
-    //% blockId=directionkeys block="APDS-9960 Direction Keys"
-    //% weight=35
-    export function directionkeys(direct: Direction, maxCmDistance = 500): number { 
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (direct) {
-            case Direction.Up:
-                return Math.floor(d * 34 / 2 / 1000);
-            case Direction.Down:
-                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
-            case Direction.Left:
-                return Math.floor(d * 34 / 2 / 1000);
-            case Direction.Right:
-                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
-            default:
-                return d;
-        }
-    }
 
-    /**
-    *Change the code (Atakan) 
-    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param rgb two states of ultrasonic module, eg: Centimeters
-    */
-    //% blockId=rgbColor block="APDS-9960 RGB Color"
-    //% weight=35
-    export function rgbColor(colorgb: RGBcolor, maxCmDistance = 500): number { 
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (colorgb) {
-            case RGBcolor.Red:
-                return Math.floor(d * 34 / 2 / 1000);
-            case RGBcolor.Green:
-                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
-            case RGBcolor.Blue:
-                return Math.floor(d * 34 / 2 / 1000);
-            default:
-                return d;
-        }
-    }
-
-    /**
-    *Change the code (Atakan) 
-    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param ldr two states of ultrasonic module, eg: Centimeters
-    */
-    //% blockId=ldr block="APDS-9960 Light Value"
-    //% weight=35
-    export function ldr(): number { 
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-
-        return 0
-
-    }
 
 
      
