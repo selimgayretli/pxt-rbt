@@ -111,7 +111,7 @@ namespace rbt {
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
     * @param Sonarunit two states of ultrasonic module, eg: Centimeters
     */
-    //% blockId=ultrasonic block="APDS-9960 Distanc %unit"
+    //% blockId=ultrasonic block="APDS-9960 Distance %unit"
     //% weight=35
     export function ultrasonic(unit: SonarUnit, maxCmDistance = 500): number {
         // send pulse
