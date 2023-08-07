@@ -1,5 +1,5 @@
 {
-    "name": "APDS-9960",
+    "name": "APDS9960",
     "version": "0.0.50",
     "description": "APDS-9960 Robotistan",
     "license": "MIT",
