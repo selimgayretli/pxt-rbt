@@ -158,7 +158,7 @@ namespace rbt {
 
 
     /**
-     * TODO: Get IR value
+     * TODO: Direction Value
      */
     //% block="Movement in the %state direction"
     //% weight=15
@@ -183,34 +183,31 @@ namespace rbt {
             return false;
         }
     }
-    /**
-    *Change the code (Atakan) 
-    * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param rgb two states of ultrasonic module, eg: Centimeters
-    */
-    //% blockId=rgbColor block="APDS-9960 RGB Color %colorgb"
-    //% weight=35
-    export function rgbColor(colorgb: RGBcolor, maxCmDistance = 500): number { 
-        // send pulse
-        pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P8, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P8, 0);
-        // read pulse
-        const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (colorgb) {
-            case RGBcolor.Red:
-                return Math.floor(d * 34 / 2 / 1000);
-            case RGBcolor.Green:
-                return Math.floor(d * 34 / 2 / 1000 * 0.3937);
-            case RGBcolor.Blue:
-                return Math.floor(d * 34 / 2 / 1000);
-            default:
-                return d;
+
+     /**
+     * TODO: RGB Color Value
+     */
+    //% block="APDS-9960 RGB Color %colorgb"
+    //% weight=15
+    export function rgbColor(colorgb: RGBcolor): boolean {
+        pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
+        pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
+        let left_tracking = pins.digitalReadPin(DigitalPin.P13);
+        let right_tracking = pins.digitalReadPin(DigitalPin.P14);
+        if (left_tracking == 0 && right_tracking == 0 && colorgb == 0) {
+            return true;
+        }
+        else if (left_tracking == 1 && right_tracking == 0 && colorgb == 1) {
+            return true;
+        }
+        else if (left_tracking == 0 && right_tracking == 1 && colorgb == 2) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
+    
 
     /**
     *Change the code (Atakan) 
