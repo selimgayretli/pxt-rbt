@@ -1,7 +1,7 @@
 {
-    "name": "rbt",
+    "name": "APDS-9960",
     "version": "0.0.46",
-    "description": "rbt test 02",
+    "description": "APDS-9960 Robotistan",
     "license": "MIT",
     "dependencies": {
         "core": "*"
