@@ -132,7 +132,7 @@ namespace rbt {
 
     /**
     * Cars can extend the ultrasonic function to prevent collisions and other functions.. 
-    * @param SonarUnit two states of ultrasonic module, eg: Centimeters
+    * @param Sonarunit two states of ultrasonic module, eg: Centimeters
     */
     //% blockId=ultrasonic block="APDS-9960 Distance"
     //% weight=35
@@ -163,7 +163,7 @@ namespace rbt {
     */
     //% blockId=directionkeys block="APDS-9960 Direction Keys"
     //% weight=35
-    export function directionkeys(unit: Direction, maxCmDistance = 500): number { 
+    export function directionkeys(direct: Direction, maxCmDistance = 500): number { 
         // send pulse
         pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
         pins.digitalWritePin(DigitalPin.P8, 0);
@@ -173,7 +173,7 @@ namespace rbt {
         pins.digitalWritePin(DigitalPin.P8, 0);
         // read pulse
         const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (unit) {
+        switch (direct) {
             case Direction.Up:
                 return Math.floor(d * 34 / 2 / 1000);
             case Direction.Down:
@@ -194,7 +194,7 @@ namespace rbt {
     */
     //% blockId=rgbColor block="APDS-9960 RGB Color"
     //% weight=35
-    export function rgbColor(unit: RGBcolor, maxCmDistance = 500): number { 
+    export function rgbColor(colorgb: RGBcolor, maxCmDistance = 500): number { 
         // send pulse
         pins.setPull(DigitalPin.P8, PinPullMode.PullNone);
         pins.digitalWritePin(DigitalPin.P8, 0);
@@ -204,7 +204,7 @@ namespace rbt {
         pins.digitalWritePin(DigitalPin.P8, 0);
         // read pulse
         const d = pins.pulseIn(DigitalPin.P12, PulseValue.High, maxCmDistance * 50);
-        switch (unit) {
+        switch (colorgb) {
             case RGBcolor.Red:
                 return Math.floor(d * 34 / 2 / 1000);
             case RGBcolor.Green:
