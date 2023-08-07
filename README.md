@@ -1,9 +1,9 @@
-# i2cLCD1602
+# Robotistan APDS-9960 Sensor
 
-makecode I2C LCD1602 package for micro:bit  
+makecode APDS-9960 package for micro:bit  
 
-Author: shaoziyang  
-Date:   2018.Mar  
+Author: Selim  
+Date:   2023 August 
   
 ![](lcd.jpg)
 
