@@ -5,7 +5,7 @@ makecode APDS-9960 package for micro:bit
 Author: Selim  
 Date:   2023 August 
   
-![](lcd.jpg)
+![](apds9960.jpg)
 
 ## Add extension
 
