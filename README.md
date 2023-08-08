@@ -11,8 +11,8 @@ Date:   2023 August
 
 open your microbit makecode project, in Extension, paste  
 
-https://github.com/makecode-extensions/i2cLCD1602  
-
+[https://github.com/makecode-extensions/i2cLCD1602  
+](https://github.com/selimgayretli/pxt-rbt)
 to search box then search.
 
 ## Basic usage
