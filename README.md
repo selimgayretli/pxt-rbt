@@ -40,10 +40,14 @@ basic.forever(() => {
 Initial APDS-9960  
 
 
-- APDS-9960 Light Value 
+- APDS-9960 Light Value
+  ![](lightValue.jpg)
 - APDS-9960 Distance (cm or inches)
+  ![](distance.jpg)
 - APDS-9960 RGB Color
+  ![](rgbcolor.jpg)
 - Movement in the Direction
+  ![](direction.jpg)
 
 
 
