@@ -37,41 +37,15 @@ basic.forever(() => {
 ## API
 
 - LcdInit(Addr: number)  
-Initial LCD  
-Addr: I2C Address. If Addr is zero, it will try to recognition correctly address automaticly.  
+Initial APDS-9960  
 
-- ShowNumber(n: number, x: number, y: number)  
-show a number in LCD at given position.  
-n: number will be show  
-x: is LCD column position, [0 - 15]  
-y: is LCD row position, [0 - 1]  
 
-- ShowString(s: string, x: number, y: number)  
-show a string in LCD at given position.  
-s: string will be show  
-x: is LCD column position, [0 - 15]  
-y: is LCD row position, [0 - 1]  
+- APDS-9960 Light Value 
+- APDS-9960 Distance (cm or inches)
+- APDS-9960 RGB Color
+- Movement in the Direction
 
-- on()  
-turn on LCD  
 
-- off()  
-turn off LCD  
-
-- clear()  
-clear LCD content  
-
-- BacklightOn()  
-turn on LCD backlight  
-
-- BacklightOff()  
-turn off LCD backlight  
-
-- shl()
-shift left screen
-
-- shr()
-shift right screen
 
 
 ## Demo
@@ -82,7 +56,7 @@ shift right screen
 
 MIT
 
-Copyright (c) 2018, microbit/micropython Chinese community  
+Copyright (c) 2023, microbit/micropython Chinese community  
 
 ## Supported targets
 
