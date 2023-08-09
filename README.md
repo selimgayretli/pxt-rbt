@@ -5,14 +5,14 @@ makecode APDS-9960 package for micro:bit
 Author: Selim  
 Date:   2023 August 
   
-![](lcd.jpg)
+![](apds9960.jpg)
 
 ## Add extension
 
 open your microbit makecode project, in Extension, paste  
 
-https://github.com/makecode-extensions/i2cLCD1602  
-
+[https://github.com/makecode-extensions/i2cLCD1602  
+](https://github.com/selimgayretli/pxt-rbt)
 to search box then search.
 
 ## Basic usage
