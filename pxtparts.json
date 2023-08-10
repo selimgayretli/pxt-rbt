@@ -26,7 +26,7 @@
     "numberOfPins": 4,
     "instantiation": {
       "kind": "function",
-      "fullyQualifiedName": "APDS9960.init,APDS9960.ultrasonic,APDS9960.directionkeys,APDS9960.rgbColor,APDS9960.ldr",
+      "fullyQualifiedName": "APDS9960.LcdInit,APDS9960.ShowNumber,APDS9960.ultrasonic,APDS9960.directionkeys,APDS9960.rgbColor,APDS9960.ldr",
       "argumentRoles": [
         {
           "pinInstantiationIdx": 0
