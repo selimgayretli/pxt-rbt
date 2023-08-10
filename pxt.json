@@ -1,6 +1,6 @@
 {
     "name": "APDS9960",
-    "version": "0.0.56",
+    "version": "0.0.57",
     "description": "APDS-9960 Robotistan",
     "license": "MIT",
     "dependencies": {
